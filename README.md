@@ -1,11 +1,11 @@
 
-# EVINAS *(Events Invitations & Asistance management)*
+# RedEmpleo *(Gestor de vacantes para empresas)*
 ---
 
 ## Primeros pasos
 
 - Clonar el repositorio.
-``git clone git@gitlab.com:cucosta/projects/evinas.git
+``git clone git@gitlab.com:cucosta/projects/redempleo.git
 ``
 - Copiar el archivo .env.example a .env y editar las credenciales de acceso a la base de datos
 - Ejecutar ``composer update``
