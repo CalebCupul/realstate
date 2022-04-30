@@ -14,7 +14,7 @@ return [
     |
      */
 
-    'title'                                   => 'Proyecto Base',
+    'title'                                   => 'Red Empleo',
     'title_prefix'                            => '',
     'title_postfix'                           => '| CUCosta',
 
@@ -45,12 +45,12 @@ return [
     |
      */
 
-    'logo'                                    => '<b>Proyecto</b> Base',
+    'logo'                                    => '<b>Red</b>Empleo',
     'logo_img'                                => 'https://picsum.photos/50/50',
     'logo_img_class'                          => 'brand-image rounded-circle elevation-3',
     'logo_img_xl'                             => null,
     'logo_img_xl_class'                       => 'brand-image-xs',
-    'logo_img_alt'                            => 'Logo Proyecto base',
+    'logo_img_alt'                            => 'Logo Red Empleo',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return [
     |
      */
 
-    'layout_topnav'                           => null,
+    'layout_topnav'                           => true,
     'layout_boxed'                            => null,
     'layout_fixed_sidebar'                    => null,
     'layout_fixed_navbar'                     => null,
@@ -131,7 +131,7 @@ return [
     'classes_sidebar'                         => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav'                     => '',
     'classes_topnav'                          => 'navbar-white navbar-light',
-    'classes_topnav_nav'                      => 'navbar-expand',
+    'classes_topnav_nav'                      => 'navbar-expand navbar-expand-lg',
     'classes_topnav_container'                => 'container',
 
     /*
@@ -321,18 +321,26 @@ return [
         //     'url'        => '#',
         // ],
 
-        ['header' => 'settings'],
         [
-            'text'  => 'users',
-            'can'   => 'users.index',
-            'route' => 'users.index',
-            'icon'  => 'fas fa-fw fa-users',
-        ],
-        [
-            'text'  => 'roles',
-            'can'   => 'roles.index',
-            'route' => 'roles.index',
-            'icon'  => 'fas fa-fw fa-user-shield',
+            'text'         => 'settings',
+            'can'          => ['users.index', 'roles.index'],
+            'active'       => ['*users*', '*roles*'],
+            'icon'         => 'fas fa-fw fa-cog',
+            'topnav_right' => true,
+            'submenu'      => [
+                [
+                    'text'  => 'users',
+                    'can'   => 'users.index',
+                    'route' => 'users.index',
+                    'icon'  => 'fas fa-fw fa-users',
+                ],
+                [
+                    'text'  => 'roles',
+                    'can'   => 'roles.index',
+                    'route' => 'roles.index',
+                    'icon'  => 'fas fa-fw fa-user-shield',
+                ],
+            ],
         ],
 
     ],
