@@ -16,7 +16,7 @@ return [
 
     'title'                                   => 'Red Empleo',
     'title_prefix'                            => '',
-    'title_postfix'                           => '| CUCosta',
+    'title_postfix'                           => '| RedEmpleo - CUCosta',
 
     /*
     |--------------------------------------------------------------------------
