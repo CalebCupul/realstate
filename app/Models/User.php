@@ -29,6 +29,9 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail
         'name',
         'email',
         'password',
+        'phone_number',
+        'address',
+        'total_sales',
     ];
 
     /**
@@ -80,6 +83,10 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail
     public function social_profiles()
     {
         return $this->hasMany(SocialProfile::class);
+    }
+
+    public function sales(){
+        return $this->hasMany(Sale::class);
     }
 
 /* -------------------------------------------------------------------------- */

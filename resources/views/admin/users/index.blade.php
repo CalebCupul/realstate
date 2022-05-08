@@ -26,7 +26,7 @@
               <tr>
                 <th>&nbsp;</th>
                 <th>{{ __('Name') }}</th>
-                <th>&nbsp;</th>
+                <th>Acciones</th>
               </tr>
             </thead>
           </table>

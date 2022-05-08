@@ -19,5 +19,6 @@ return [
     'settings'         => 'AJUSTES',
     'roles'            => 'Roles',
     'users'            => 'Usuarios',
+    'sales'            => 'Ventas',
 
 ];

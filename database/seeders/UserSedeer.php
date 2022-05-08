@@ -22,8 +22,11 @@ class UserSedeer extends Seeder
                 'name' => EnumRoles::SUDO,
             ],
             [
-                'email'    => 'sudo@sudo.com',
-                'password' => 'password',
+                'email'         => 'sudo@sudo.com',
+                'password'      => 'password',
+                'phone_number'  => '3221233212',
+                'address'       => '497 Georgia 247',
+                'total_sales'         => '0',
             ]
         );
 
@@ -37,6 +40,9 @@ class UserSedeer extends Seeder
             [
                 'email'    => 'admin@admin.com',
                 'password' => 'password',
+                'phone_number'  => '3228549963',
+                'address'       => '18031 Central Park Cir',
+                'total_sales'         => '0',
             ]
         );
 
@@ -50,10 +56,16 @@ class UserSedeer extends Seeder
             [
                 'email'    => 'user@user.com',
                 'password' => 'password',
+                'phone_number'  => '3225986678',
+                'address'       => '900 W Riverdale Rd',
+                'total_sales'         => '0',
             ]
         );
 
         $user->assignRole(EnumRoles::USER);
+
+        User::factory()->count(20)->create();
+
 
     }
 }

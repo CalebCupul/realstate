@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Roles
     Route::get('roles/get-index-table', [RoleController::class, 'getIndexTable'])->name('roles.getIndexTable');
     Route::resource('roles', RoleController::class);
+
+    // Roles
+    Route::get('sales/get-index-table', [SaleController::class, 'getIndexTable'])->name('sales.getIndexTable');
+    Route::resource('sales', RoleController::class);
 
 });
 

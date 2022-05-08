@@ -23,6 +23,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $permissions = [
             'users' => ['index', 'create', 'show', 'edit', 'destroy'],
             'roles' => ['index', 'create', 'show', 'edit', 'destroy'],
+            'sales' => ['index', 'create', 'show', 'edit', 'destroy'],
         ];
 
         foreach ($permissions as $model => $methods) {

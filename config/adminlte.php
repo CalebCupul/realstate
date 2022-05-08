@@ -14,9 +14,9 @@ return [
     |
      */
 
-    'title'                                   => 'Red Empleo',
+    'title'                                   => 'Nomademx',
     'title_prefix'                            => '',
-    'title_postfix'                           => '| RedEmpleo - CUCosta',
+    'title_postfix'                           => '| RealState - Nomademx',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,12 +45,12 @@ return [
     |
      */
 
-    'logo'                                    => '<b>Red</b>Empleo',
+    'logo'                                    => '<b>Nomade</b>mx',
     'logo_img'                                => 'https://picsum.photos/50/50',
     'logo_img_class'                          => 'brand-image rounded-circle elevation-3',
     'logo_img_xl'                             => null,
     'logo_img_xl_class'                       => 'brand-image-xs',
-    'logo_img_alt'                            => 'Logo Red Empleo',
+    'logo_img_alt'                            => 'Logo Nomademx',
 
     /*
     |--------------------------------------------------------------------------
@@ -323,8 +323,8 @@ return [
 
         [
             'text'         => 'settings',
-            'can'          => ['users.index', 'roles.index'],
-            'active'       => ['*users*', '*roles*'],
+            'can'          => ['users.index', 'roles.index', 'sales.index'],
+            'active'       => ['*users*', '*roles*', '*sales*'],
             'icon'         => 'fas fa-fw fa-cog',
             'topnav_right' => true,
             'submenu'      => [
@@ -338,6 +338,12 @@ return [
                     'text'  => 'roles',
                     'can'   => 'roles.index',
                     'route' => 'roles.index',
+                    'icon'  => 'fas fa-fw fa-user-shield',
+                ],
+                [
+                    'text'  => 'sales',
+                    'can'   => 'sales.index',
+                    'route' => 'sales.index',
                     'icon'  => 'fas fa-fw fa-user-shield',
                 ],
             ],
