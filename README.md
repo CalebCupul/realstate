@@ -5,7 +5,7 @@
 
 - Ejecutar ``composer update``
 - Ejecutar ``php artisan key:generate``
-- Importar ``paises.sql`` a MySql
+- 
 - Ejecutar ``php artisan migrate --seed``
 
 - Ahora puede iniciar sesion como:
