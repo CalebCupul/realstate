@@ -107,7 +107,11 @@ class SaleController extends Controller
      */
     public function edit(Sale $sale)
     {
-        return view('admin.sales.edit', compact('sale'));
+        $data['countries'] = Country::get(["country_name", "id"]);
+        $property_types = $sale->getPropertyTypes();
+        $sale_types = $sale->getSaleTypes();
+        
+        return view('admin.sales.edit', $data, compact('sale','property_types', 'sale_types'));
     }
 
     /**
@@ -120,15 +124,17 @@ class SaleController extends Controller
     public function update(UpdateSaleRequest $request, Sale $sale)
     {
         $fields = $request->validated();
+        $user = array('user_id' =>  Arr::pull($sale, 'user_id'));
+        $fields = array_merge($fields, $user);
 
-        $sale = Sale::create(Arr::except($fields, 'image'));
+        $sale->update(Arr::except($fields, 'image'));
 
         if ($request->hasFile('house') && !$this->saveFile($request->file('house'), 'house', $sale)) {
             return redirect()->route('sales.edit', $sale)->with('toast_error', 'Algo sailo mal. Intente de nuevo!');
         }
 
-
-        return redirect()->route('sales.index')->with('toast_success', 'Registro guardado.');
+        return redirect()->route('sales.getSales')->with('toast_success', 'Registro guardado.');
+        
     }
 
     /**
@@ -164,8 +170,13 @@ class SaleController extends Controller
     }
 
     public function getSales(){
-        $sales = Sale::with('user')->get();
+        $sales = Sale::with('user','suburb','city','media')->get();
         return view('users.sales.index', compact('sales'));
+    }
 
+    public function getUserSales(){
+        $user = Auth::User();
+        $sales = Sale::with('suburb', 'city','user')->where('user_id', '=', $user->id)->get();
+        return view('users.sales.index', compact('sales'));
     }
 }

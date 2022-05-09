@@ -4,6 +4,11 @@
 
 @section('content_header')
 
+@can('edit', $sale)
+      <div class="col-auto ">
+        @include('share.buttons.edit', ['routeName' => 'sales.edit', 'params' => $sale])
+      </div>
+    @endcan
 
 @stop
 

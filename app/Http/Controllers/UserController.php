@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
+
+
 class UserController extends Controller
 {
     public function __construct()

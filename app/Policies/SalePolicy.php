@@ -33,6 +33,17 @@ class SalePolicy
         return $user->can('sales.show');
     }
 
+    public function edit(User $user, Sale $sale)
+    {
+        if ( $user->roles->pluck('name') == 'Super Admin'){
+            return true;
+        }
+
+        if($sale->user->id === $user->id){
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can create models.
      *

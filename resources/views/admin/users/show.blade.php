@@ -10,7 +10,7 @@
       <h1 class="m-0 text-dark">{{ __('Usuario') }}</h1>
 
     </div>
-    @can('update', $user)
+    @can('edit', $user)
       <div class="col-auto ">
         @include('share.buttons.edit', ['routeName' => 'users.edit', 'params' => $user])
       </div>

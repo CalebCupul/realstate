@@ -34,6 +34,17 @@ class UserPolicy
         // return true;
     }
 
+    public function edit(User $user, User $model)
+    {
+        if ( $user->roles->pluck('name') == 'Super Admin'){
+            return true;
+        }
+
+        if($user->id === $model->id){
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can create models.
      *

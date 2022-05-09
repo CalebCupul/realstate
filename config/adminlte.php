@@ -321,17 +321,32 @@ return [
         //     'url'        => '#',
         // ],
         [
-            'text'         => 'profile',
-            'route'          => 'users.getProfile',
-            'icon'         => 'fas fa-user',
+            'text'         => 'settings',
             'active'       => ['*users*', '*roles*', '*sales*'],
+            'icon'         => 'fas fa-fw fa-cog',
+            'topnav_left' => true,
+            'submenu'      => [
+                [
+                    'text'         => 'profile',
+                    'url'          => '/profile',
+                    'icon'         => 'fas fa-user',
+                    'active'       => ['*users*'],
+                ],
+                [
+                    'text'         => 'Tus ventas',
+                    'url'          => '/my-sales',
+                    'icon'         => 'fas fa-sign',
+                    'active'       => ['*users*'],
+                ],
+            ],
         ],
         [
             'text'         => 'sales',
             'url'        => '/market',
             'icon'         => 'fas fa-sign',
-            'active'       => ['*users*', '*roles*', '*sales*'],
+            'active'       => ['*sales*'],
         ],
+        
         [
             'text'         => 'settings',
             'can'          => ['users.index', 'roles.index', 'sales.index'],

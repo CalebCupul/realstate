@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #DEB493;
+}
+
+.outer-div{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, 450px);
+    justify-content: center;
+    align-items: center;
+}
+
+.house-card{
+    background-color: white;
+    width: 450px;
+    border-radius: 5px;
+    box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+
+.house-img-container{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    position: relative;
+    top: -50px;
+    border: 5px solid white;
+    background-size: contain;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -50px;
+}
+
+.price{
+    position: relative;
+    top: -45px;
+    left: 20px;
+    color: white;
+    font-family: 'Noto Sans','sans-serif';
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    text-shadow: 3px 4px 5px #000;
+}
+
+
+.background-img{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    filter: brightness(70%);
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.house-caption{
+    position: relative;
+    top: -40px;
+    padding: 1rem;
+    font-family: 'Outfit', 'sans-serif';
+    margin-bottom: -30px;
+}
+
+.suburb{
+    font-size: .9rem;
+}
+
+.status{
+    padding-bottom: 1rem;
+    margin-top: 0;
+    color: green;
+    font-weight: 700;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.house-contact{
+    position: relative;
+    top: -45px;
+    margin-bottom: -45px;
+    margin: 0;
+    padding: 2rem 1rem 0 1rem;
+    font-family: 'Outfit', 'Sans-serif';
+    line-height: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.house-contact p{
+    padding: 0;
+    margin: 0;
+}
+
+.house-contact a{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.user-img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
