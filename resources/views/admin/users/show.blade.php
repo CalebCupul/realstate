@@ -15,12 +15,6 @@
         @include('share.buttons.edit', ['routeName' => 'users.edit', 'params' => $user])
       </div>
     @endcan
-    @can('delete', $user)
-      <div class="col-auto ml-auto">
-        @include('share.buttons.destroy', ['routeName' => 'users.destroy', 'params' => $user])
-
-      </div>
-    @endcan
   </div>
 @stop
 

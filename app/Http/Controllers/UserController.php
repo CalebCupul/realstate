@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\EnumRoles;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
@@ -9,6 +10,7 @@ use App\Models\User;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -67,7 +69,7 @@ class UserController extends Controller
         $fields = $request->validated();
 
         $user = User::create(Arr::except($fields, 'avatar'));
-        dd($user);
+        $user->assignRole(EnumRoles::USER);
 
         if ($request->hasFile('avatar')) {
             $this->saveFile($request->file('avatar'), 'avatar', $user);
@@ -141,5 +143,13 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('toast_success', 'Registro eliminado.');
 
+    }
+
+    public function getProfile(){
+                
+        $user = Auth::user();
+        $loggedUser = Auth::user();
+
+        return redirect()->route('users.show', compact('user', 'loggedUser'));
     }
 }

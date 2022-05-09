@@ -45,6 +45,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 });
 
+Route::get('/profile', [UserController::class, 'getProfile'])->name('users.getProfile');
+
 Route::fallback(function () {
 
     return redirect('home')->with('toast_errors', 'Algo salio mal!.');

@@ -46,11 +46,11 @@ return [
      */
 
     'logo'                                    => '<b>Nomade</b>mx',
-    'logo_img'                                => 'https://picsum.photos/50/50',
-    'logo_img_class'                          => 'brand-image rounded-circle elevation-3',
+    'logo_img'                                => null,
+    'logo_img_class'                          => '',
     'logo_img_xl'                             => null,
-    'logo_img_xl_class'                       => 'brand-image-xs',
-    'logo_img_alt'                            => 'Logo Nomademx',
+    'logo_img_xl_class'                       => '',
+    'logo_img_alt'                            => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -320,7 +320,18 @@ return [
         //     'icon_color' => 'cyan',
         //     'url'        => '#',
         // ],
-
+        [
+            'text'         => 'profile',
+            'route'          => 'users.getProfile',
+            'icon'         => 'fas fa-user',
+            'active'       => ['*users*', '*roles*', '*sales*'],
+        ],
+        [
+            'text'         => 'sales',
+            'route'        => 'sales.index',
+            'icon'         => 'fas fa-sign',
+            'active'       => ['*users*', '*roles*', '*sales*'],
+        ],
         [
             'text'         => 'settings',
             'can'          => ['users.index', 'roles.index', 'sales.index'],
@@ -348,6 +359,7 @@ return [
                 ],
             ],
         ],
+        
 
     ],
 
