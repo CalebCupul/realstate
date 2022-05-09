@@ -328,7 +328,7 @@ return [
         ],
         [
             'text'         => 'sales',
-            'route'        => 'sales.index',
+            'url'        => '/market',
             'icon'         => 'fas fa-sign',
             'active'       => ['*users*', '*roles*', '*sales*'],
         ],

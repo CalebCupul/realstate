@@ -46,6 +46,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 });
 
 Route::get('/profile', [UserController::class, 'getProfile'])->name('users.getProfile');
+Route::get('/market', [SaleController::class, 'getSales'])->name('sales.getSales');
 
 Route::fallback(function () {
 

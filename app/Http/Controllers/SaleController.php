@@ -162,4 +162,10 @@ class SaleController extends Controller
         $data['suburbs'] = Suburb::where("city_id", $request->city_id)->get();
         return response()->json($data);
     }
+
+    public function getSales(){
+        $sales = Sale::with('user')->get();
+        return view('users.sales.index', compact('sales'));
+
+    }
 }
