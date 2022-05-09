@@ -5,7 +5,6 @@
 
 - Ejecutar ``composer update``
 - Ejecutar ``php artisan key:generate``
-- 
 - Ejecutar ``php artisan migrate --seed``
 
 - Ahora puede iniciar sesion como:
