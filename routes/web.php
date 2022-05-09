@@ -35,9 +35,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('roles/get-index-table', [RoleController::class, 'getIndexTable'])->name('roles.getIndexTable');
     Route::resource('roles', RoleController::class);
 
-    // Roles
+    // Sales
+    //Rutas para combobox de Pais/estado/ciudad/colonia
+    Route::post('/get-states', [SaleController::class, 'getStates'])->name('getStates');
+    Route::post('/get-cities', [SaleController::class, 'getCities'])->name('getCities');
+    Route::post('/get-suburbs', [SaleController::class, 'getSuburbs'])->name('getSuburbs');
     Route::get('sales/get-index-table', [SaleController::class, 'getIndexTable'])->name('sales.getIndexTable');
-    Route::resource('sales', RoleController::class);
+    Route::resource('sales', SaleController::class);
 
 });
 

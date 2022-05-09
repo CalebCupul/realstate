@@ -344,7 +344,7 @@ return [
                     'text'  => 'sales',
                     'can'   => 'sales.index',
                     'route' => 'sales.index',
-                    'icon'  => 'fas fa-fw fa-user-shield',
+                    'icon'  => 'fas fa-sign',
                 ],
             ],
         ],

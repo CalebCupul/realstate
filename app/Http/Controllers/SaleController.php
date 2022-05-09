@@ -2,12 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Sale\StoreSaleRequest;
+use App\Http\Requests\Sale\UpdateSaleRequest;
 use App\Models\Sale;
-use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\UpdateSaleRequest;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\State;
+use App\Models\Suburb;
+use App\Models\User;
+use Freshbitsweb\Laratables\Laratables;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('permission:users.index')->only(['index', 'getIndexTable']);
+        // $this->middleware('permission:users.show')->only('show');
+        // $this->middleware('permission:users.create')->only(['create', 'store']);
+        // $this->middleware('permission:users.edit')->only(['edit', 'update']);
+        // $this->middleware('permission:users.destroy')->only('destroy');
+
+        $this->authorizeResource(Sale::class, 'sale');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +35,18 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        $sales = Sale::with('user')->get();
+        return view('admin.sales.index', compact('sales'));
+    }
+
+    public function getIndexTable()
+    {
+
+        $this->authorize('viewAny', Sale::class);
+
+
+        return Laratables::recordsOf(Sale::class);
+
     }
 
     /**
@@ -23,9 +54,13 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Sale $sale)
     {
-        //
+        $data['countries'] = Country::get(["country_name", "id"]);
+        $property_types = $sale->getPropertyTypes();
+        $sale_types = $sale->getSaleTypes();
+
+        return view('admin.sales.create', $data ,compact('property_types', 'sale_types'));
     }
 
     /**
@@ -36,7 +71,21 @@ class SaleController extends Controller
      */
     public function store(StoreSaleRequest $request)
     {
-        //
+        $user = Auth::User();
+        $fields = $request->validated();
+        $data = array_merge($fields, ['user_id' => $user->id]);
+
+        
+
+        $sale = Sale::create(Arr::except($data, 'image'));
+
+        
+
+        if ($request->hasFile('house')) {
+            $this->saveFile($request->file('house'), 'house', $sale);
+        }
+
+        return redirect()->route('sales.index')->with('toast_success', 'Registro guardado.');
     }
 
     /**
@@ -47,7 +96,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        //
+        return view('admin.sales.show', compact('sale'));
     }
 
     /**
@@ -58,7 +107,7 @@ class SaleController extends Controller
      */
     public function edit(Sale $sale)
     {
-        //
+        return view('admin.sales.edit', compact('sale'));
     }
 
     /**
@@ -70,7 +119,16 @@ class SaleController extends Controller
      */
     public function update(UpdateSaleRequest $request, Sale $sale)
     {
-        //
+        $fields = $request->validated();
+
+        $sale = Sale::create(Arr::except($fields, 'image'));
+
+        if ($request->hasFile('house') && !$this->saveFile($request->file('house'), 'house', $sale)) {
+            return redirect()->route('sales.edit', $sale)->with('toast_error', 'Algo sailo mal. Intente de nuevo!');
+        }
+
+
+        return redirect()->route('sales.index')->with('toast_success', 'Registro guardado.');
     }
 
     /**
@@ -81,6 +139,27 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        //
+        $sale->delete();
+
+        return redirect()->route('sales.index')->with('toast_success', 'Registro eliminado.');
+    }
+
+    public function getStates(Request $request){
+
+        $data['states'] = State::where("country_id", $request->country_id)->get(["state_name", "id"]);
+        return response()->json($data);
+    }
+
+    public function getCities(Request $request){
+
+        $data['cities'] = City::where("state_id", $request->state_id)->get(["city_name", "id"]);
+        return response()->json($data);
+
+    }
+
+    public function getSuburbs(Request $request){
+
+        $data['suburbs'] = Suburb::where("city_id", $request->city_id)->get();
+        return response()->json($data);
     }
 }

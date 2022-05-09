@@ -18,7 +18,7 @@ class SalePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('sales.index');
     }
 
     /**
@@ -30,7 +30,7 @@ class SalePolicy
      */
     public function view(User $user, Sale $sale)
     {
-        //
+        return $user->can('sales.show');
     }
 
     /**
@@ -41,7 +41,7 @@ class SalePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('sales.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class SalePolicy
      */
     public function update(User $user, Sale $sale)
     {
-        //
+        return $user->can('sales.edit');
     }
 
     /**
@@ -65,7 +65,7 @@ class SalePolicy
      */
     public function delete(User $user, Sale $sale)
     {
-        //
+        return $user->can('sales.destroy');
     }
 
     /**
@@ -77,7 +77,7 @@ class SalePolicy
      */
     public function restore(User $user, Sale $sale)
     {
-        //
+        return $user->can('sales.destroy');
     }
 
     /**
@@ -89,6 +89,6 @@ class SalePolicy
      */
     public function forceDelete(User $user, Sale $sale)
     {
-        //
+        return $user->can('sales.destroy');
     }
 }

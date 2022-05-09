@@ -41,7 +41,6 @@ class CreateSalesTable extends Migration
                 ->on('suburbs')
                 ->onDelete('set null');
                 
-            $table->string('image');
             $table->string('description');
             $table->enum('status', ['Activa', 'Vendida'])->default('Activa');
             $table->enum('property_type', ['Casa', 'Departamento', 'Terreno']);

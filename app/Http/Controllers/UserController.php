@@ -67,6 +67,7 @@ class UserController extends Controller
         $fields = $request->validated();
 
         $user = User::create(Arr::except($fields, 'avatar'));
+        dd($user);
 
         if ($request->hasFile('avatar')) {
             $this->saveFile($request->file('avatar'), 'avatar', $user);

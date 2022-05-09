@@ -29,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
         //
         Paginator::useBootstrap();
 
+        Conversion::register('house', function (Image $image) {
+            return $image->fit(1000, 800);
+        });
+
         Conversion::register('avatar', function (Image $image) {
             return $image->fit(160, 160);
         });
