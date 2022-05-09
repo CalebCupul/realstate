@@ -21,8 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesAndPermissionsSeeder::class,
             UserSedeer::class,
+            CountriesTableSeeder::class,
+            StatesTableSeeder::class,
+            CitiesTableSeeder::class,
+            SuburbsTableSeeder::class
             // CommentSeeder::class,
         ]);
-
     }
 }
