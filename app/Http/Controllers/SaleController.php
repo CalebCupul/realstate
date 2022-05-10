@@ -85,7 +85,7 @@ class SaleController extends Controller
             $this->saveFile($request->file('house'), 'house', $sale);
         }
 
-        return redirect()->route('sales.index')->with('toast_success', 'Registro guardado.');
+        return redirect()->route('sales.getSales')->with('toast_success', 'Registro guardado.');
     }
 
     /**
