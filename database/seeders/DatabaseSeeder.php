@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             CountriesTableSeeder::class,
             StatesTableSeeder::class,
             CitiesTableSeeder::class,
-            SuburbsTableSeeder::class
+            SuburbsTableSeeder::class,
+            SaleSeeder::class
             // CommentSeeder::class,
         ]);
     }

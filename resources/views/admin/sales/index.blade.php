@@ -22,18 +22,19 @@
       <div class="card">
         <div class="card-body">
           <table class="table table-hover table-sm" id="sales-table">
-            <thead>
-              <tr>
+            <thead class="text-center">
+              <tr >
                 <th>id</th>
                 <th>Usuario</th>
                 <th>Dirección</th>
                 <th>Tipo de venta</th>
                 <th>Tipo de inmueble</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
               </tr>
             </thead>
 
-            <tbody>
+            <tbody class="text-center">
                 @foreach ($sales as $sale)
                   <tr>
                     <td>{{$sale->id}}</td>
@@ -41,6 +42,7 @@
                     <td>{{$sale->street}}</td>
                     <td>{{$sale->sale_type}}</td>
                     <td>{{$sale->property_type}}</td>
+                    <td>{{$sale->created_at}}</td>
                     <td>@include('admin.sales.includes.index_action')</td>
   
                     
