@@ -24,9 +24,9 @@
         <div class="{{ $auth_type ?? 'login' }}-logo">
           <a href="{{ $dashboard_url }}">
             <div class="row justify-content-center">
-              <div class="col-auto">
+              <!-- <div class="col-auto">
                 <img src="{{ asset(config('adminlte.logo_img')) }}" height="50" class="rounded-circle">
-              </div>
+              </div> -->
               <div class="col-auto align-content-center">
                 {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
               </div>

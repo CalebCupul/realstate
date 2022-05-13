@@ -103,6 +103,7 @@ class HomeController extends Controller
     // y devuelve una collecion ordenada de arrays con fecha -> venta
 
     public function fillAndOrderEmptyDatesAndValues($property_type_collection, $dates){
+        //  Fechas existentes
         $houses_date = [];
         foreach($property_type_collection as $house_date){
             $houses_date[] = $house_date['date'];
@@ -134,8 +135,6 @@ class HomeController extends Controller
 
         return $data;
     }
-
-
 
     public function getAveragePrice($sales){
         $average_price = 0;

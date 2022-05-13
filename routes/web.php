@@ -20,14 +20,10 @@ Route::get('/', function () {
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
 
-    // Home
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-
     // Files Controller
     Route::get('/files/{filenName}/{group?}', FilesController::class)->name('getFile');
 
     // Users
-
     Route::get('users/get-index-table', [UserController::class, 'getIndexTable'])->name('users.getIndexTable');
     Route::resource('users', UserController::class);
 
@@ -45,9 +41,17 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 });
 
+// Dashboard
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+// Home
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/profile', [UserController::class, 'getProfile'])->name('users.getProfile');
-Route::get('/market', [SaleController::class, 'getSales'])->name('sales.getSales');
-Route::get('/my-sales', [SaleController::class, 'getUserSales'])->name('sales.getUserSales');
+
+Route::get('/market/{searchSales?}', [SaleController::class, 'searchSales'])->name('sales.searchSales');
+
+Route::get('/my-sales/{searchUserSales?}', [SaleController::class, 'getUserSales'])->name('sales.getUserSales');
 
 Route::fallback(function () {
 

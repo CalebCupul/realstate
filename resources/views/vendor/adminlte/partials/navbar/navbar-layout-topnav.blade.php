@@ -44,6 +44,19 @@
                 @else
                     @include('adminlte::partials.navbar.menu-item-logout-link')
                 @endif
+            @else
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ route('home') }}" class="nav-link btn btn-primary text-white">Home</a>
+                    @else
+                        <a href="{{ route('login') }}" class="nav-link btn btn-primary  text-white">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                               class="nav-link">Register</a>
+                        @endif
+                    @endauth
+                @endif
             @endif
 
             {{-- Right sidebar toggler link --}}

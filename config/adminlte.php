@@ -102,12 +102,12 @@ return [
     |
      */
 
-    'classes_auth_bg_image'                   => 'https://picsum.photos/80/45?grayscale&blur=2',
+    'classes_auth_bg_image'                   => null,
     'classes_auth_card'                       => 'card-outline card-primary',
-    'classes_auth_header'                     => '',
-    'classes_auth_body'                       => '',
-    'classes_auth_footer'                     => '',
-    'classes_auth_icon'                       => '',
+    'classes_auth_header'                     => null,
+    'classes_auth_body'                       => null,
+    'classes_auth_footer'                     => null,
+    'classes_auth_icon'                       => null,
     'classes_auth_btn'                        => 'btn-primary',
 
     /*
@@ -321,9 +321,16 @@ return [
         //     'url'        => '#',
         // ],
         [
-            'text'         => 'settings',
+            'text'         => 'Dashboard',
+            'url'        => '/dashboard',
+            'icon'         => 'fas fa-chart-bar',
+            'can'          => ['users.index'],
+        ],
+        [
+            'text'         => 'Ajustes',
             'active'       => ['*users*', '*roles*', '*sales*'],
             'icon'         => 'fas fa-fw fa-cog',
+            'can'          => ['users.index'],
             'topnav_left' => true,
             'submenu'      => [
                 [
@@ -345,10 +352,10 @@ return [
             'url'        => '/market',
             'icon'         => 'fas fa-sign',
             'active'       => ['*sales*'],
+            'can'          => ['users.index'],
         ],
-        
         [
-            'text'         => 'settings',
+            'text'         => 'Ajustes',
             'can'          => ['users.index', 'roles.index', 'sales.index'],
             'active'       => ['*users*', '*roles*', '*sales*'],
             'icon'         => 'fas fa-fw fa-cog',

@@ -169,14 +169,63 @@ class SaleController extends Controller
         return response()->json($data);
     }
 
-    public function getSales(){
-        $sales = Sale::with('user','suburb','city','media')->get();
+    public function searchSales(Request $request){
+        $search = $request->input('search');
+
+        // Si hay un filtro, busca en la base de datos y lo retorna
+        if( !empty($search)){
+            $sales = Sale::with('user','country','state','suburb','city','media')
+            ->select('sales.*','users.name','countries.country_name','states.state_name','cities.city_name','suburbs.suburb_name')
+            ->join('users','users.id','=','sales.user_id')
+            ->join('countries','countries.id','=','sales.country_id')
+            ->join('states','states.id','=','sales.state_id')
+            ->join('cities','cities.id','=','sales.city_id')
+            ->join('suburbs','suburbs.id','=','sales.suburb_id')
+            ->where('users.name', 'LIKE', $search)
+            ->orWhere('countries.country_name', 'LIKE', $search)
+            ->orWhere('states.state_name', 'LIKE', $search)
+            ->orWhere('cities.city_name', 'LIKE', $search)
+            ->orWhere('suburbs.suburb_name', 'LIKE', $search)
+            ->orWhere('sales.property_type', 'LIKE', $search)
+            ->orWhere('sales.sale_type', 'LIKE', $search)
+            ->orWhere('sales.street', 'LIKE', $search)
+            ->orWhere('sales.price', 'LIKE', $search)
+            ->paginate(10)->withQueryString();
+        }else{
+            // Si el campo va en blanco, retorna las ventas sin filtro
+            $sales = Sale::with('user','suburb','city','media')->paginate(10);
+        }
         return view('users.sales.index', compact('sales'));
     }
 
-    public function getUserSales(){
+    public function getUserSales(Request $request){
+        
         $user = Auth::User();
-        $sales = Sale::with('suburb', 'city','user')->where('user_id', '=', $user->id)->get();
-        return view('users.sales.index', compact('sales'));
+        $search = $request->input('search');
+
+        if( !empty($search)){
+            $sales = Sale::with('user','country','state','suburb','city','media')
+            ->select('sales.*','countries.country_name','states.state_name','cities.city_name','suburbs.suburb_name')
+            ->join('countries','countries.id','=','sales.country_id')
+            ->join('states','states.id','=','sales.state_id')
+            ->join('cities','cities.id','=','sales.city_id')
+            ->join('suburbs','suburbs.id','=','sales.suburb_id')
+            ->where('user_id', '=', $user->id)
+            ->where(function($query) use($search){
+                $query->Where('countries.country_name', 'LIKE', $search)
+                ->orWhere('states.state_name', 'LIKE', $search)
+                ->orWhere('cities.city_name', 'LIKE', $search)
+                ->orWhere('suburbs.suburb_name', 'LIKE', $search)
+                ->orWhere('sales.property_type', 'LIKE', $search)
+                ->orWhere('sales.sale_type', 'LIKE', $search)
+                ->orWhere('sales.street', 'LIKE', $search)
+                ->orWhere('sales.price', 'LIKE', $search);
+            })->paginate(10)->withQueryString();
+        }else{
+            $sales = Sale::with('user', 'country', 'state', 'suburb','city','media')
+            ->where('user_id', '=', $user->id)->paginate(10);
+        }
+
+        return view('users.sales.userSales', compact('sales'));
     }
 }
