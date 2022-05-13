@@ -85,7 +85,7 @@ class SaleController extends Controller
             $this->saveFile($request->file('house'), 'house', $sale);
         }
 
-        return redirect()->route('sales.getSales')->with('toast_success', 'Registro guardado.');
+        return redirect()->route('sales.searchSales')->with('toast_success', 'Registro guardado.');
     }
 
     /**
@@ -190,10 +190,11 @@ class SaleController extends Controller
             ->orWhere('sales.sale_type', 'LIKE', $search)
             ->orWhere('sales.street', 'LIKE', $search)
             ->orWhere('sales.price', 'LIKE', $search)
+            ->orderBy('created_at', 'desc')
             ->paginate(10)->withQueryString();
         }else{
             // Si el campo va en blanco, retorna las ventas sin filtro
-            $sales = Sale::with('user','suburb','city','media')->paginate(10);
+            $sales = Sale::with('user','suburb','city','media')->orderBy('created_at', 'desc')->paginate(10);
         }
         return view('users.sales.index', compact('sales'));
     }
@@ -220,10 +221,10 @@ class SaleController extends Controller
                 ->orWhere('sales.sale_type', 'LIKE', $search)
                 ->orWhere('sales.street', 'LIKE', $search)
                 ->orWhere('sales.price', 'LIKE', $search);
-            })->paginate(10)->withQueryString();
+            })->orderBy('created_at', 'desc')->paginate(10)->withQueryString();
         }else{
             $sales = Sale::with('user', 'country', 'state', 'suburb','city','media')
-            ->where('user_id', '=', $user->id)->paginate(10);
+            ->where('user_id', '=', $user->id)->orderBy('created_at', 'desc')->paginate(10);
         }
 
         return view('users.sales.userSales', compact('sales'));
