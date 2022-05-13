@@ -1,5 +1,5 @@
 
-# Nomademx (Gestor de venta de propiedades para Nomademx)
+# Nomademx (Gestor de venta de propiedades para empresa de bienes raíces)
 
 ## Primeros pasos
 
@@ -7,7 +7,7 @@
 - Ejecutar ``php artisan key:generate``
 - Ejecutar ``php artisan migrate --seed``
 
-- Ahora puede iniciar sesion como:
+- Ahora puede iniciar sesión como:
     - Super Admin: ``sudo@sudo.com:password``
     - Admin: ``admin@admin.com:password``
     - User: ``user@user.com:password``
