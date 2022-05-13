@@ -19,21 +19,38 @@
 @stop
 
 @section('content')
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-3 textt-center">
-              <img src="{{ $user->avatar() }}" class="img-thumbnail rounded-circle" alt="Avatar">
-            </div>
-            <div class="col-md-9">
-              <h2>{{ $user->name }}</h2>
-              <h3>{{ $user->email }}</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row d-flex justify-content-center mt-4">
+  <div class="card col-8">
+                                    <h5 class="card-header text-center"><span class="fas fa-user-tie"></span> Agente</h5>
+                                    <div class="card-body">
+
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="col-4 mt-1">
+                                                <img class="img-fluid rounded" 
+                                                    style="width: 200px; height:200px; object-fit: cover" 
+                                                    src="{{ $user->avatar() }}" 
+                                                    alt="{{ $user->name }}"/>
+                                            </div>
+                                            
+                                            <div class="col-8 mt-4">
+                                                    <div>
+                                                        <label for="name" class="form-label">Nombre</label>
+                                                        <input type="text" id="name" class="form-control" placeholder="{{$user->name}}" readonly>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="col-8">
+                                                            <label for="email" class="form-label">Correo</label>
+                                                            <input type="email" id="email" class="form-control" placeholder="{{$user->email}}" readonly>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label for="phone_number" class="form-label">Teléfono</label>
+                                                            <input type="phone_number" id="phone_number" class="form-control" placeholder="{{$user->phone_number}}" readonly>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
   </div>
+</div>
 @stop

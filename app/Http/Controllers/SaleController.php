@@ -133,7 +133,7 @@ class SaleController extends Controller
             return redirect()->route('sales.edit', $sale)->with('toast_error', 'Algo sailo mal. Intente de nuevo!');
         }
 
-        return redirect()->route('sales.getSales')->with('toast_success', 'Registro guardado.');
+        return redirect()->route('sales.searchSales')->with('toast_success', 'Registro guardado.');
         
     }
 

@@ -324,26 +324,24 @@ return [
             'text'         => 'Dashboard',
             'url'        => '/dashboard',
             'icon'         => 'fas fa-chart-bar',
-            'can'          => ['users.index'],
+            'can'          => ['sales.create'],
         ],
         [
             'text'         => 'Ajustes',
             'active'       => ['*users*', '*roles*', '*sales*'],
             'icon'         => 'fas fa-fw fa-cog',
-            'can'          => ['users.index'],
+            'can'          => ['sales.create'],
             'topnav_left' => true,
             'submenu'      => [
                 [
                     'text'         => 'profile',
                     'url'          => '/profile',
                     'icon'         => 'fas fa-user',
-                    'active'       => ['*users*'],
                 ],
                 [
                     'text'         => 'Tus ventas',
                     'url'          => '/my-sales',
                     'icon'         => 'fas fa-sign',
-                    'active'       => ['*users*'],
                 ],
             ],
         ],
@@ -351,8 +349,7 @@ return [
             'text'         => 'sales',
             'url'        => '/market',
             'icon'         => 'fas fa-sign',
-            'active'       => ['*sales*'],
-            'can'          => ['users.index'],
+            'can'          => ['sales.create'],
         ],
         [
             'text'         => 'Ajustes',

@@ -10,7 +10,7 @@
 <div class="container-fluid">
   <div class="d-flex justify-content-center p-2">
     {!! Form::open(['method' => 'GET', 'route' => 'sales.getUserSales', 'class' => 'form-inline']) !!}
-        {!! Form::text('search', null, array('class' => 'form-control m-2', 'placeholder' => 'Buscar propiedad')) !!}
+        {!! Form::text('search', null, array('class' => 'form-control m-2', 'placeholder' => 'Buscar en tus propiedades')) !!}
         <button type="submit" class="btn btn-primary mr-2">Buscar</button>
         <a href="{{ route('sales.create') }}" role="button" class="btn btn-primary">Nueva venta</a>
     {!! Form::close() !!}
