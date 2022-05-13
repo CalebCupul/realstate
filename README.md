@@ -14,7 +14,7 @@
 
 ## Asignar permisos al rol User
 
-- Loogearse como Super Admin
+- Iniciar sesión como Super Admin
 - Dentro del CRUD de Roles, seleccionar el rol 'User' y asignarle los siguientes permisos:
     - sales.create
     - sales.destroy
