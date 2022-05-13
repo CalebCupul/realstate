@@ -6,6 +6,7 @@
 - Ejecutar ``composer update``
 - Ejecutar ``php artisan key:generate``
 - Ejecutar ``php artisan migrate --seed``
+- Ejecutar ``php artisan serve``
 
 - Ahora puede iniciar sesión como:
     - Super Admin: ``sudo@sudo.com:password``
