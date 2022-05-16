@@ -47,7 +47,7 @@ class CreateSalesTable extends Migration
             $table->string('street');
             $table->string('price');
             $table->enum('sale_type', ['Renta', 'Venta', 'Preventa']);
-            $table->timestamp('sold_at');
+            $table->timestamp('sold_at')->nullable();
             $table->timestamps();
         });
     }
