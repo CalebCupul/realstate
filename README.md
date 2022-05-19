@@ -3,6 +3,8 @@
 
 ## Primeros pasos
 
+- Clonar el repositorio con ``git clone https://github.com/CalebCupul/realstate.git``
+- Copiar el archivo .env.example a .env y editar las credenciales de acceso a la base de datos
 - Ejecutar ``composer update``
 - Ejecutar ``php artisan key:generate``
 - Ejecutar ``php artisan migrate --seed``
@@ -18,7 +20,6 @@
 - Iniciar sesión como Super Admin
 - Dentro del CRUD de Roles, seleccionar el rol 'User' y asignarle los siguientes permisos:
     - sales.create
-    - sales.destroy
     - sales.edit
     - sales.show
     - users.edit
