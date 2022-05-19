@@ -98,7 +98,7 @@
                                             <div class="col-4 mt-1">
                                                 <img class="img-fluid rounded" 
                                                     style="width: 200px; height:250px; object-fit: cover" 
-                                                    src="/images/default-avatar.jpeg" 
+                                                    src="{{ $sale->user->avatar() }}" 
                                                     alt="{{ $sale->user->name }}"/>
                                                     
                                             </div>
